@@ -38,7 +38,7 @@ export default function DetailedView() {
   if (loading) return "Loading..."
   return (
     <>
-    <Card>
+    <Card style={{width: '256px'}}>
         <CardContent>
             <NavLink to={'./name'} key='name'>
             <Typography variant="h6" gutterBottom component="div">
@@ -55,11 +55,11 @@ export default function DetailedView() {
                 <br></br>
                 Defense: {base.Defense}
             </Typography>
-            {/* <NavLink to={'./info'}>
+            <NavLink to={'./base'}>
             <Typography variant="caption" display="block" gutterBottom>
                 Show more
             </Typography>
-            </NavLink> */}
+            </NavLink>
         </CardContent>
     </Card>
         <Outlet />

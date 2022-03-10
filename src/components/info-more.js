@@ -13,6 +13,39 @@ export default function InfoMore(){
     const [loading, setLoading] = useState(true);
 
     const url = `http://localhost:3001/pokemon/${params.id}/${params.info}`
+    console.log(url)
+    let renderData;
+
+    const NameData = () =>{
+      return(
+        <Box style={{marginLeft: '32px', padding: '16px', backgroundColor: "#DAE8F8", width: '256px'}}>
+        <Typography>
+        French: {moreData.french}
+        <br></br>
+        Chinese: {moreData.chinese}
+        <br></br>
+        Japanese: {moreData.japanese}
+      </Typography>
+      </Box>
+      )
+    }
+
+    const BaseData = () =>{
+      console.log(moreData)
+      return(
+        <Box style={{marginLeft: '32px', padding: '16px', backgroundColor: "#DAE8F8", width: '256px'}}>
+        <Typography>
+        HP: {moreData.HP}
+        {/* <br></br>
+        Special Attack: {moreData.SpAttack} */}
+        <br></br>
+        Speed: {moreData.Speed}
+        <br></br>
+        Defense: {moreData.Defense}
+      </Typography>
+      </Box>
+      )
+    }
 
     useEffect(() => {
         setLoading(true);
@@ -29,19 +62,18 @@ export default function InfoMore(){
         
     }, []);
   if (loading) return "Loading..."
+  
+  if (params.info === 'name') {
+    renderData = <NameData />
+  }
+
+  if (params.info === 'base') {
+    renderData = <BaseData />
+  }
 
     return(
-<>
-<Box style={{marginLeft: '32px', padding: '16px', backgroundColor: "#DAE8F8"}}>
-    <Typography>
-        French: {moreData.french}
-        <br></br>
-        Chinese: {moreData.chinese}
-        <br></br>
-        Japanese: {moreData.japanese}
-    </Typography>
-</Box>
-
-</>
+    <>
+      {renderData}
+    </>
   )
 }
